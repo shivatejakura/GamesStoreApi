@@ -19,9 +19,9 @@ namespace GameStore.Api.Mapper
 
         }
 
-        public static GameDto ToDto(this Game game)
+        public static GameSummaryDto ToDto(this Game game)
         {
-           return  new GameDto(
+           return  new GameSummaryDto(
                              game.id,
                              game.name,
                              game.Genre?.name ?? "Unknown", // Avoid null issues
@@ -29,6 +29,30 @@ namespace GameStore.Api.Mapper
                              game.ReleaseDate);
 
         }
+
+        public static GameDetailsDto ToGameDetailDto(this Game game)
+        {
+            return new GameDetailsDto(
+                              game.id,
+                              game.name,
+                              game.GenreId, // Avoid null issues
+                              game.price,
+                              game.ReleaseDate);
+
+        }
+
+        public static Game ToEntity(this UpdateDto game, int id)
+        {
+            return new Game()
+            {
+                id = id,
+                name = game.Name,
+                GenreId = game.GenreId,
+                price = game.price,
+                ReleaseDate = game.ReleaseDate
+            };
+        }
+
     }
 }
 

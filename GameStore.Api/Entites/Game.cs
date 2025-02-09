@@ -8,7 +8,7 @@ namespace GameStore.Api.Entites
         public int id { get; set; }
         public required string name { get; set; }
         public int GenreId { get; set; }
-        public Genre Genre { get; set; }
+        public Genre? Genre { get; set; }
         public decimal price { get; set; }
 
         public DateOnly ReleaseDate { get; set; }
